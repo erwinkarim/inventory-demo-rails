@@ -17,12 +17,20 @@
 				<td>
 					<a class="btn btn-sm btn-primary" href="<%= inventory_path(inventory.id) %>">View</a>
 					<span class="mx-1"></span>
-					<%= link_to 'Delete', inventory, class: 'btn btn-danger btn-sm', data: {turbo_method: :delete, turbo_confrim: 'Are you sure?'} %>
+					<%= form_with url: inventory_path(inventory.id), method: :delete do |form| %>
+						<%= form.submit 'Delete', class: 'ml-2 btn btn-sm btn-danger' %>
+						<% end %>
 				</td>
 			</tr>
 		<% end %>
 		</tbody>
 	</table>
-	<%= link_to 'Generate', generate_inventories_path, class: 'btn btn-primary', data: {turbo_method: :post} %>
-	<%= render "form", :locals => {:inventory => @inventory } %>
+
+	<!-- for signed in users only -->
+	<% if user_signed_in? %>
+		<%= form_with url: generate_inventories_path do |form| %>
+			<%= form.submit 'Generate', class: 'btn btn-primary' %>
+		<% end %>
+		<%= render "form", :locals => {:inventory => @inventory } %>
+	<% end %>
 </div>

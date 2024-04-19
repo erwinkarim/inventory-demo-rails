@@ -25,6 +25,15 @@
             </li>
           </ul>
         </div>
+        <% if user_signed_in? %>
+          <%= form_with url: destroy_user_session_path, class: 'form-inline', method: :delete do |form| %>
+            <%= form.submit 'Log Out', class: 'nav-link' %>
+          <% end %>
+        <% else %>
+          <ul class="navbar-nav mr-auto">
+            <li> <%= link_to "Login", new_user_session_path, class: 'nav-link' %> </li>
+          </ul>
+        <% end %>
       </nav>
       <h1>Application layout</h1>
       <%= yield %>

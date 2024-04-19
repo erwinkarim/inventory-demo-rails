@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  # for devise useres
+  devise_for :users
+
   get 'pages/index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -14,4 +17,5 @@ Rails.application.routes.draw do
       post :generate
     end
   end
+
 end

@@ -63,14 +63,15 @@ class InventoryController < ApplicationController
 	def generate
 		logger.debug 'should generate random inventory'
 
-		@inventory = Inventory::new({
+		inventory = Inventory::new({
 			name: Faker::Name.name,
 			desc: Faker::Lorem.paragraph(sentence_count: 15),
 			price: Faker::Commerce.price,
 			picture: Faker::Internet.url,
 		});
-		@inventory.save();
+		inventory.save();
 
+		@inventory = Inventory::new();
 		@inventories = Inventory::all();
 		render 'index', :layout => "application"
 

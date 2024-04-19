@@ -71,3 +71,4 @@ gem 'bootstrap'
 gem 'sass-rails'
 gem 'faker'
 gem 'dynamic_form'
+gem "devise", "~> 4.9"
