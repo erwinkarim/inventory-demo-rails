@@ -1,0 +1,9 @@
+<div>
+	<%= @inventory.to_json %>
+</div>
+
+<div>
+	<a href="<%= edit_inventory_path(@inventory.id) %>" class="btn btn-primary">Edit</a>
+	<a href="<%= inventories_path %>" class="btn btn-secondary">Back</a>
+	<%= link_to 'Delete', @inventory, class: 'btn btn-danger', data: {turbo_method: :delete, turbo_confrim: 'Are you sure?'} %>
+</div>

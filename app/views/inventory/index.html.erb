@@ -1,0 +1,28 @@
+<div>
+	<p>Table on inventories here</p>
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>ID</th><th>Name</th><th>Desc</th><th>Price</th><th>Picture</th><th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+		<% @inventories.each do |inventory| %>
+			<tr>
+				<td><%= inventory.id %></td>
+				<td><%= inventory.name %></td>
+				<td><%= inventory.desc %></td>
+				<td><%= inventory.price %></td>
+				<td><%= inventory.picture %></td>
+				<td>
+					<a class="btn btn-sm btn-primary" href="<%= inventory_path(inventory.id) %>">View</a>
+					<span class="mx-1"></span>
+					<%= link_to 'Delete', inventory, class: 'btn btn-danger btn-sm', data: {turbo_method: :delete, turbo_confrim: 'Are you sure?'} %>
+				</td>
+			</tr>
+		<% end %>
+		</tbody>
+	</table>
+	<%= link_to 'Generate', generate_inventories_path, class: 'btn btn-primary', data: {turbo_method: :post} %>
+	<%= render "form", :locals => {:inventory => @inventory } %>
+</div>

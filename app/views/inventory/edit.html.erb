@@ -1,0 +1,6 @@
+<h2>Edit Inventory</h2>
+
+<%= render "form", :locals => {:inventory => @inventory } %>
+
+<hr />
+<a href="<%= inventories_path(@inventory.id) %>" class="btn btn-secondary">Cancel</a>
