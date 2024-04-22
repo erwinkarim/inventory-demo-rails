@@ -1,24 +1,27 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A rails server demo as a portfolio. You can find a working demo [here](#)
 
-Things you may want to cover:
+## Capabilities
 
-* Ruby version
+* inventory list
+* pagination 
+* search
+* user login
+* user permission
+* generate inventory via factory
 
-* System dependencies
+## How to run
 
-* Configuration
+Clone this repo and run the following :-
+ 
+```
+bundle install
+rails server
+```
 
-* Database creation
+And then head to [http:\\localhost:3000\]
 
-* Database initialization
+## What I use
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Devise - User management
