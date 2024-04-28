@@ -1,0 +1,23 @@
+<h1>Users#show</h1>
+<p>Find me in app/views/users/show.html.erb</p>
+
+<div>
+	<hr />
+	<p>Create/Update Form</p>
+	<%= form_with model: @user do |f| %>
+		<%= f.error_messages %>
+		<div class="form-group">
+			<%= f.label :email %>
+			<%= f.text_field :email, class: 'form-control', disabled: true %>
+		</div>
+		<div class="form-group">
+			<%= f.label :new_password %>
+			<%= f.password_field :new_password, class: 'form-control' %>
+		</div>
+		<div class="form-group">
+			<%= f.label :confirm_password %>
+			<%= f.password_field :confirm_password, class: 'form-control' %>
+		<%= f.submit class: 'btn btn-primary mt-2', data: { turbo_frame: '_top' } %>
+		<%= link_to 'Cancel', settings_path, class: 'btn btn-secondary mt-2' %>
+	<% end %>
+</div>

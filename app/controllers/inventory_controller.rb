@@ -58,6 +58,12 @@ class InventoryController < ApplicationController
 
 	def destroy
 		logger.debug 'should delete the inventory'
+		Inventory.find(params[:id]).destroy;
+
+		@inventory = Inventory::new();
+		@inventories = Inventory::all();
+
+		redirect_back_or_to inventories_path
 	end
 
 	def generate
@@ -73,7 +79,12 @@ class InventoryController < ApplicationController
 
 		@inventory = Inventory::new();
 		@inventories = Inventory::all();
-		render 'index', :layout => "application"
+
+		if params[:src] then
+			redirect_back_or_to params[:src]
+		else 
+			redirect_back_or_to inventories_path
+		end
 
 	end
 

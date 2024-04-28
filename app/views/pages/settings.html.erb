@@ -1,0 +1,45 @@
+<h1>Settings Page</h1>
+
+<h2>User permissions</h2>
+<p>List users and what permissions they have</p>
+<table class="table table-bordered">
+	<thead>
+		<tr><th>ID</th><th>email</th><th>Role</th><th>Action</th></tr>
+	</thead>
+	<tbody>
+		<% @users.each do |user| %>
+			<tr>
+				<td><%= user.id %></td><td><%= user.email %></td>
+				<td>Admin</td><td class="">
+					<a href="<%= user_path(user) %>" class="d-line"><span class="material-symbols-outlined">edit</span></a>
+					<%= form_with url: user_path(user), method: :delete, class: 'd-inline' do |form| %>
+						<button type="submit" class="btn btn-link p-0">
+							<span class="material-symbols-outlined"> delete </span>
+						</button>
+					<% end %>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+<p>
+	<%= form_with url: generate_users_path do |form| %>
+		<%= form.submit 'Generate User', class: 'btn btn-primary' %>
+	<% end %>
+</p>
+<p><%= @users.count %> User(s)</p>
+
+<h2>Auto Generate Inventory</h2>
+<p>Button to auto generate 1 or 100 new inventory objects</p>
+<p><%= @inventoryCount%> Inventories</p>
+<div class="d-inline-flex">
+	<%= form_with url: generate_inventories_path, class: 'd-flex mx-2' do |form| %>
+		<%= form.submit 'Generate 1 inventory', class: 'btn btn-primary' %>
+		<input type="hidden" name="src" value="<%= request.env['PATH_INFO'] %>" />
+	<% end %>
+	<%= form_with url: generate_inventories_path, class: 'd-flex ml-2' do |form| %>
+		<input type="hidden" name="amt" value="100" />
+		<input type="hidden" name="src" value="<%= request.env['PATH_INFO'] %>" />
+		<%= form.submit 'Generate 100 inventory', class: 'btn btn-primary' %>
+	<% end %>
+</div>
